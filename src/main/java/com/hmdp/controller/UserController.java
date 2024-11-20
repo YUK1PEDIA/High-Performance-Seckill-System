@@ -14,6 +14,7 @@ import lombok.extern.slf4j.Slf4j;
 import org.springframework.web.bind.annotation.*;
 
 import javax.annotation.Resource;
+import javax.servlet.ServletConfig;
 import javax.servlet.http.HttpSession;
 
 /**
@@ -34,6 +35,7 @@ public class UserController {
 
     @Resource
     private IUserInfoService userInfoService;
+    private ServletConfig servletConfig;
 
     /**
      * 发送手机验证码
@@ -93,5 +95,23 @@ public class UserController {
         UserDTO userDTO = BeanUtil.copyProperties(user, UserDTO.class);
         // 返回
         return Result.ok(userDTO);
+    }
+
+    /**
+     * 用户签到
+     * @return
+     */
+    @PostMapping("/sign")
+    public Result sign() {
+        return userService.sign();
+    }
+
+    /**
+     * 记录签到天数
+     * @return
+     */
+    @GetMapping("/sign/count")
+    public Result signCount() {
+        return userService.signCount();
     }
 }
