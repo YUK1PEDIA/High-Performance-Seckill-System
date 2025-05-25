@@ -17,14 +17,6 @@ import javax.annotation.Resource;
 import javax.servlet.ServletConfig;
 import javax.servlet.http.HttpSession;
 
-/**
- * <p>
- * 前端控制器
- * </p>
- *
- * @author 虎哥
- * @since 2021-12-22
- */
 @Slf4j
 @RestController
 @RequestMapping("/user")
@@ -60,8 +52,7 @@ public class UserController {
      */
     @PostMapping("/logout")
     public Result logout(){
-        // TODO 实现登出功能
-        return Result.fail("功能未完成");
+        return Result.fail("登出功能待开发");
     }
 
     @GetMapping("/me")
